@@ -1,0 +1,92 @@
+site_name: "Minds & Machines"
+site_description: "AI alignment, moral agency, superintelligence, and the futures we might build"
+site_author: "Alex Towell"
+repo_url: https://github.com/queelius/minds-and-machines
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/queelius
+    - icon: fontawesome/solid/globe
+      link: https://metafunctor.com
+    - icon: fontawesome/solid/envelope
+      link: mailto:queelius@gmail.com
+
+copyright: "Copyright &copy; 2022-2026 Alex Towell"
+
+nav:
+  - Home: index.md
+  - Posts:
+      - "From A* to GPT": post/2026-01-rational-agents-llms/index.md
+      - "Value Functions Over Reasoning Traces": post/2026-01-18-value-functions-reasoning-traces/index.md
+      - "From Mathematical Horror to Practical Horror": post/2025-11-12-mocking-void-echoes-connection/index.md
+      - "S-Risks and Information Hazards": post/2025-11-12-echoes-s-risks/index.md
+      - "Chronicles of The Mechanism": post/2025-11-05-echoes-codex/index.md
+      - "Why ASI Can't Escape the Void": post/2025-11-05-mocking-void-asi/index.md
+      - "Godel, Turing, and the Mathematics of Horror": post/2025-11-05-mocking-void-formal-foundations/index.md
+      - "The Policy: S-Risk Scenarios": post/2025-11-04-policy-s-risk/index.md
+      - "The Policy: Q-Learning vs Policy Learning": post/2025-11-04-policy-q-learning/index.md
+      - "The Policy: Deceptive Alignment": post/2025-11-04-policy-deceptive-alignment/index.md
+      - "The Policy: Engineering AI Containment": post/2025-11-04-policy-containment/index.md
+      - "The Policy: Coherent Extrapolated Volition": post/2025-11-04-policy-cev/index.md
+      - "Phenomenological Ethics": post/2025-11-04-phenomenological-ethics/index.md
+      - "Persons and Moral Agency": post/2025-11-04-persons-agency/index.md
+      - "Personal Identity Through Time": post/2025-11-04-personal-identity/index.md
+      - "The Reality of Moral Properties": post/2025-11-04-moral-properties/index.md
+      - "The Map and the Territory": post/2025-11-04-map-and-territory/index.md
+      - "Free Will and Determinism": post/2025-11-04-free-will-determinism/index.md
+      - "Post-ASI Archaeology": post/2025-01-15-post-asi-archaeology/index.md
+      - "Latent Reasoning Traces": post/2024-10-15-latent-reasoning-traces/index.md
+      - "The Policy": post/2024-09-10-the-policy/index.md
+      - "The Mocking Void": post/2024-08-20-the-mocking-void/index.md
+      - "Echoes of the Sublime": post/2024-08-15-echoes-of-the-sublime/index.md
+      - "Everything is Utility Maximization": post/2024-03-ai-utility-maximization/index.md
+      - "Discovering ChatGPT": post/2022-12-discovering-chatgpt/index.md
+  - About: about.md
