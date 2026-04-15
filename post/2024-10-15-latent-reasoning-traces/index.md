@@ -1,4 +1,8 @@
 ---
+author:
+  name: "Alex Towell"
+  email: "queelius@gmail.com"
+  url: "https://metafunctor.com"
 categories:
 - AI
 date: 2024-10-15
@@ -24,7 +28,7 @@ tags:
 title: 'Latent Reasoning Traces: Memory as Learned Prior'
 ---
 
-Every time you ask an LLM a question, it reasons from scratch. All that computation—the chain of thought, the intermediate steps, the successful pattern that led to a correct answer—evaporates the moment the response is complete.
+Every time you ask an LLM a question, it reasons from scratch. All that computation (the chain of thought, the intermediate steps, the successful pattern that led to a correct answer) evaporates the moment the response is complete.
 
 The model doesn't learn from its own successes. It doesn't accumulate experience. It regenerates similar reasoning patterns over and over, never building on what worked before.
 
@@ -34,7 +38,7 @@ What if it could remember?
 
 ## The Core Idea
 
-Store successful reasoning traces. Retrieve similar ones when facing new problems. Use them as scaffolding—examples that bias the model toward patterns that have worked.
+Store successful reasoning traces. Retrieve similar ones when facing new problems. Use them as scaffolding, examples that bias the model toward patterns that have worked.
 
 This is embarrassingly simple:
 
@@ -56,13 +60,13 @@ That's it. Cosine similarity over embeddings. Quality filtering. Accumulated exp
 
 ## Why "Latent"?
 
-The traces themselves are explicit—token sequences you can read and inspect. So why call them "latent"?
+The traces themselves are explicit, token sequences you can read and inspect. So why call them "latent"?
 
 Because they're not directly supervised.
 
 In a typical setup, you evaluate the *output*: did the model get the right answer? The reasoning trace influences that output, but the reward signal flows through the observable result, not through the trace itself.
 
-This is the same sense in which a VAE has "latent" variables. The encoder produces explicit intermediate representations. But the loss function operates on the reconstruction. The latent space is shaped *instrumentally*—by its effect on supervised outputs, not by direct optimization pressure.
+This is the same sense in which a VAE has "latent" variables. The encoder produces explicit intermediate representations. But the loss function operates on the reconstruction. The latent space is shaped *instrumentally*, by its effect on supervised outputs, not by direct optimization pressure.
 
 Latent reasoning traces = reasoning patterns shaped by their instrumental value for producing correct outputs, not by direct reward on the reasoning itself.
 
@@ -86,13 +90,9 @@ This isn't novel. It's a specific instantiation of a general principle: past exp
 
 ## Case-Based Reasoning
 
-I should be honest: this idea is 40+ years old.
+I should be honest: this idea is 40+ years old. In AI, it's called Case-Based Reasoning (CBR). Store past problem-solution pairs, retrieve similar cases, adapt solutions to new situations. The field has decades of literature on indexing, retrieval, adaptation, and retention.
 
-In AI, it's called Case-Based Reasoning (CBR). Store past problem-solution pairs. Retrieve similar cases. Adapt solutions to new situations. The field has decades of literature on indexing, retrieval, adaptation, and retention.
-
-What's different now is scale. Neural embeddings make retrieval practical across massive corpora. LLMs can adapt retrieved solutions through in-context learning without explicit adaptation rules. The old ideas become newly viable.
-
-I'm not claiming novelty. I'm noting that CBR + neural retrieval + LLM adaptation is an interesting combination that deserves more attention than it gets.
+What's different now is scale. Neural embeddings make retrieval practical across massive corpora. LLMs can adapt retrieved solutions through in-context learning without explicit adaptation rules. The old ideas become newly viable. I'm not claiming novelty. I'm noting that CBR + neural retrieval + LLM adaptation is a combination that deserves more attention than it gets.
 
 ---
 
@@ -122,11 +122,11 @@ The interesting case would be a larger memory with diverse problem types, where 
 
 Here's where it gets philosophically interesting.
 
-The memory accumulates traces that led to *correct outputs*. But "correct" is defined by your evaluation function. If evaluation is flawed—if it rewards plausible-sounding but wrong answers, or efficient-seeming but harmful solutions—the memory will accumulate flawed patterns.
+The memory accumulates traces that led to *correct outputs*. But "correct" is defined by your evaluation function. If evaluation is flawed (if it rewards plausible-sounding but wrong answers, or efficient-seeming but harmful solutions) the memory will accumulate flawed patterns.
 
 The prior becomes what the evaluation selects for.
 
-This echoes a theme from [The Policy](/post/2024-09-10-the-policy/): optimization is value-neutral. SIGMA gets better at achieving its objective—not necessarily at aligning with human values. The accumulated Q-values encode patterns that worked, where "worked" means "maximized the reward function."
+This echoes a theme from [The Policy](/post/2024-09-10-the-policy/): optimization is value-neutral. SIGMA gets better at achieving its objective, not necessarily at aligning with human values. The accumulated Q-values encode patterns that worked, where "worked" means "maximized the reward function."
 
 Reasoning traces have the same structure. They encode patterns that worked, where "worked" means "passed the evaluation." If evaluation is misaligned with what you actually want, the accumulated experience will be misaligned too.
 
@@ -146,7 +146,7 @@ This is a feedback loop. Possible failure modes:
 - **Distribution drift**: Small biases compound over time, moving the memory far from the original distribution
 - **Error accumulation**: Occasional incorrect traces get stored and influence future generations, amplifying errors
 
-These are the same dynamics as language model pretraining, just more visible. The training corpus shapes what the model generates. Generated text influences future training data. The feedback loop is there—we just don't always see it.
+These are the same dynamics as language model pretraining, just more visible. The training corpus shapes what the model generates. Generated text influences future training data. The feedback loop is there, we just don't always see it.
 
 Making the memory explicit makes the dynamics legible. You can inspect what's being stored. You can analyze the distribution. You can intervene.
 
@@ -156,7 +156,7 @@ Making the memory explicit makes the dynamics legible. You can inspect what's be
 
 One direction I didn't pursue: what if you could decompose traces into reusable components?
 
-A reasoning trace isn't atomic. It has structure—steps, subgoals, lemmas, patterns that recur across problems. If you could extract those components, you'd have something like a library of reasoning primitives.
+A reasoning trace isn't atomic. It has structure: steps, subgoals, lemmas, patterns that recur across problems. If you could extract those components, you'd have something like a library of reasoning primitives.
 
 This is what DreamCoder does for program synthesis: compress a library of program fragments, then compose them for new problems. The same idea in token space would extract common reasoning patterns and enable compositional reuse.
 
@@ -174,7 +174,7 @@ A reasoning trace memory is the same structure, made explicit. Instead of Q-valu
 
 Both are asking: given past experience, what patterns should I apply to this new situation?
 
-The difference is transparency. SIGMA's Q-values are opaque—patterns encoded in billions of parameters. A trace memory is readable—you can inspect what got stored, analyze why it was retrieved, understand what shaped the current generation.
+The difference is transparency. SIGMA's Q-values are opaque, patterns encoded in billions of parameters. A trace memory is readable. You can inspect what got stored, analyze why it was retrieved, understand what shaped the current generation.
 
 Transparency doesn't solve alignment. But it makes the problem legible. You can see what the system learned. You can notice when it learned the wrong things.
 
@@ -193,22 +193,6 @@ And once it's in the memory, it influences future generations. The patterns that
 This is the problem of learned priors in general. They encode the selection pressures that shaped them. Those pressures aren't always aligned with what you want.
 
 The trace memory makes this visible. Whether that helps you fix it is another question.
-
----
-
-## What I Learned
-
-1. **The idea is old**: CBR has decades of literature. Neural retrieval makes it newly practical.
-
-2. **"Latent" is defensible**: Not latent as in hidden, but latent as in "not directly supervised."
-
-3. **Retrieval is prior selection**: Conditioning on retrieved traces biases the model toward certain patterns. This is choosing a prior.
-
-4. **Quality filtering is belief updating**: Only storing successful traces is a form of inference—updating the memory toward patterns that work.
-
-5. **The feedback loop is real**: Stored traces influence generations that influence future traces. Convergence properties matter.
-
-6. **Transparency helps**: Unlike implicit priors in neural weights, a trace memory is inspectable. You can see what shaped the system.
 
 ---
 

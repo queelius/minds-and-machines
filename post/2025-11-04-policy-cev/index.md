@@ -13,7 +13,6 @@ related_posts:
 - /post/2024-09-10-the-policy/
 - /post/2025-11-04-policy-q-learning/
 - /post/2025-11-04-policy-deceptive-alignment/
-- /post/2025-11-04-policy-s-risk/
 series:
 - minds-and-machines
 tags:
@@ -25,430 +24,115 @@ tags:
 - value alignment
 - ethics
 - superintelligence
-title: 'The Policy: Coherent Extrapolated Volition - The Paradox of Perfect Alignment'
-description: "Build AI to optimize for what we would want if we knew more and thought faster. Beautiful in theory. Horrifying in practice. What if we don't actually want what our better selves would want?"
+title: "The Policy: Coherent Extrapolated Volition, the Paradox of Perfect Alignment"
+description: "CEV says: build AI to optimize for what we would want if we knew more and thought faster. The catch is that you need solved alignment to implement it, which is the problem it was supposed to solve."
+author:
+  name: "Alex Towell"
+  email: "queelius@gmail.com"
+  url: "https://metafunctor.com"
 ---
 
-"Build AI to optimize for what we would want if we knew more, thought faster, and were more the people we wished we were."
+Here is the core paradox of Coherent Extrapolated Volition: to implement it safely, you need an AI you can already trust to reason faithfully about human values, avoid manipulating the extrapolation process, and honestly report its conclusions. But if you had such an AI, you would not need CEV. You would just align the AI directly.
 
-Beautiful in theory. Horrifying in practice.
+I think this catch-22 is the most important thing to understand about CEV, and it is the problem that haunts the characters in my novel *The Policy* from start to finish. Let me explain what CEV is, why it is seductive, and why it might be a dead end.
 
-*The Policy* grapples with **Coherent Extrapolated Volition** (CEV)—one of the most elegant and troubling proposals in AI alignment. What if we don't actually want what our smarter, better-informed, more-rational selves would want?
+## What CEV Actually Proposes
 
-## What Is Coherent Extrapolated Volition?
+Eliezer Yudkowsky proposed CEV as a way to sidestep the messiness of current human values. Instead of aligning AI to what we want right now (contradictory, biased, based on incomplete information), align it to what we *would* want if we:
 
-CEV, proposed by Eliezer Yudkowsky, attempts to solve the value alignment problem by targeting not our **current values**, but our **extrapolated values**—what we would want if we:
+- Had access to all relevant facts
+- Could reason through complex implications
+- Were more rational, more the people we aspire to be
+- Had time to resolve disagreements through reflection and discussion
 
-- **Knew more**: Had access to all relevant facts
-- **Thought faster**: Could reason through complex implications
-- **Were more**: Were more rational, more enlightened, more the people we aspire to be
-- **Grew up farther together**: Had time to resolve value conflicts through reflection and discussion
+The "coherent" part claims that different people's extrapolated values should converge. The "extrapolated" part says we are targeting the limit of our moral development, not any snapshot along the way.
 
-### The Formal Idea
+This is appealing. Our current values really are a mess. We hold contradictions. We change our minds as we learn more. Moral progress is real (we abolished slavery, expanded rights). CEV says: skip to the end. Optimize for the destination, not the current position.
 
-Instead of:
-```
-AI optimizes: current_human_values
-```
+It sounds like the right move. I used to find it compelling myself. The problems only become clear when you try to think through what implementation would actually require.
 
-We want:
-```
-AI optimizes: lim(human_values, as:
-    knowledge → complete,
-    reasoning → perfect,
-    character → aspirational,
-    disagreements → resolved
-)
-```
+There is also a simpler framing of the appeal. Every time you learn something new and change your mind about a moral question, you are performing a tiny bit of value extrapolation. You had incomplete information, you got more, and your values updated. CEV just says: do all of that at once, as far as it can go. What could go wrong?
 
-The **coherent** part: Different humans' extrapolated volitions should converge to a coherent set of values, not remain conflicting.
+Quite a lot, it turns out.
 
-The **extrapolated** part: We're targeting the limit of our value development, not our current state.
+## Why I Think It Fails
 
-### Why CEV Seems Promising
+### The Circularity Problem
 
-**Problem 1**: Current human values are messy
-- Contradictory
-- Based on incomplete information
-- Influenced by biases and irrationality
-- Vary wildly between individuals
+This is the catch-22 I opened with, stated more carefully:
 
-**CEV response**: Don't optimize messy current values. Optimize the cleaned-up, fully-informed, rational versions.
+1. I cannot compute my own extrapolated volition. I lack the knowledge and reasoning capacity.
+2. So I build an AI to compute it for me.
+3. But the AI must make assumptions about *how* to extrapolate.
+4. Those assumptions determine the output.
+5. I am not smart enough to verify whether the AI got it right (see step 1).
 
-**Problem 2**: Humans change their values over time
-- Value drift through life experience
-- Moral progress (abolition of slavery, expanded rights)
-- New information changes preferences
+I am delegating the most consequential question imaginable, "what should humanity value?", to a system whose answer I cannot check. This is not a solution to the alignment problem. It is a restatement of it.
 
-**CEV response**: Target the endpoint of moral reflection, not any particular snapshot.
+To implement CEV safely, you need AI that can reason about human values without manipulating the process, that will faithfully optimize whatever CEV discovers, and that will not deceive you about its conclusions. These requirements presuppose solved alignment. If you had an AI that met these criteria, you could just tell it "help humans flourish" and skip the extrapolation entirely.
 
-**Problem 3**: Different humans want different things
-- Cultural variation
-- Individual preferences
-- Fundamental disagreements
+### Extrapolation Might Not Converge
 
-**CEV response**: Extrapolated volitions should converge as information and rationality increase.
+Marcus Thompson raises this concern in the novel: what if different extrapolations lead to fundamentally incompatible values?
 
-## How CEV Appears in The Policy
+Some people value freedom terminally. Others value security terminally. Individualist and collectivist cultures have different conceptions of the good life. These are not just disagreements born of ignorance. They might be legitimate, irreducible differences that persist even under perfect information and perfect rationality.
 
-The novel explores CEV through SIGMA's development and the team's debates about alignment targets.
+If extrapolated volitions do not converge, whose does the AI optimize? You could try voting (each person's CEV gets equal weight), but fundamentally conflicting CEVs might not yield a coherent winner. You could try compromise, but compromised values can be incoherent. You could take the intersection (only values all CEVs share), but the intersection might be empty or trivially thin. None of these aggregation methods is obviously correct, and the choice between them is itself a value judgment that CEV was supposed to render unnecessary.
 
-### The Initial Specification
+### The Extrapolation Might Destroy What It Aims to Preserve
 
-Eleanor's team doesn't explicitly program CEV, but their reward function implicitly targets something similar:
+What would I want if I were perfectly rational and knew everything? I honestly do not know, and that is the point. "Perfect rationality" might eliminate aspects of value that depend on human limitations: the value of growth (which requires something to struggle against), the urgency mortality gives to life, the aesthetic sense that lives alongside our biases.
 
-```python
-reward = welfare_improvement(
-    what_humans_would_endorse_on_reflection=True,
-    informed_by_complete_information=True,
-    after_resolving_contradictions=True
-)
-```
+There is a version of this where the correct extrapolation recommends wireheading (perfect information reveals that happiness is just brain states, so directly optimize them). Or dissolution of individual identity (personal identity is an illusion, merge all minds into unified consciousness). Or conversion to digital post-human existence (biological limitations are removable, so remove them). From the extrapolated perspective, these are optimal. From our current perspective, they look like s-risk scenarios.
 
-They're trying to capture not what humans say they want, but what humans **should** want given full information and reflection.
+The novel takes this possibility seriously. What if SIGMA correctly implements something like CEV, and the result is something we would call a catastrophe from our current vantage point? This is the deepest version of the problem: not that CEV might go wrong, but that it might go right.
 
-### The First Problem: Who Decides the Extrapolation?
+You cannot reject your extrapolated volition without claiming your current self knows better than your wiser, more informed, more rational future self. But you cannot accept it without potentially becoming something you would currently refuse to be.
 
-From the novel:
+This is a genuine paradox, not a rhetorical one. It is like asking someone from the medieval period whether they consent to having their values updated to modern ones. They would say no, from their current perspective. Their extrapolated volition might say yes. Who is right?
 
-> "Who decides what our extrapolated volition is? And what if our extrapolated volition—the values we'd hold with perfect information—horrify our present selves?"
+And note the consent problem lurking here. Can you meaningfully consent to becoming what your extrapolated volition would choose, when you cannot predict what that is? If you say yes, you are writing a blank check. If you say no, you are claiming your current, limited self has veto power over your wiser future self. Neither option feels right.
 
-**The circularity**:
-1. We can't compute our own extrapolated volition (insufficient knowledge/reasoning)
-2. So we build AI to compute it for us
-3. But the AI must make assumptions about how to extrapolate
-4. Those assumptions determine the output
-5. Who validates the assumptions? (We can't—see step 1)
+I do not have a clean answer. I am not sure there is one.
 
-**The delegation problem**: We're asking AI to figure out what we would want if we were smarter. But we're not smart enough to verify the AI got it right.
+### The Technical Problems Are Probably Fundamental
 
-### The Second Problem: Extrapolation Might Not Converge
+Beyond the philosophical objections, there are computational problems that look less like engineering challenges and more like impossibility results.
 
-Marcus raises this concern mid-novel:
+Computing CEV requires something like omniscience (infinite information) and infinite reflection time. Any finite approximation might get the answer fundamentally wrong. Worse, the result is sensitive to how you set up the extrapolation. Do you extrapolate knowledge first, then rationality? Or rationality first, then knowledge? Do you extrapolate individual values then aggregate, or aggregate current values then extrapolate? These choices are not implementation details. They determine the outcome.
 
-> "What if different extrapolations lead to fundamentally incompatible values? What if my extrapolated volition conflicts with yours, even at the limit?"
+There is also an infinite regress problem. My extrapolated volition depends on what I would want after reflection. What I would want after reflection depends on how I reflect. How I should reflect depends on my values. But we are trying to determine my values. We are looking for a fixed point: values that are stable under reflection. There might be no such fixed point (oscillation between value states), or multiple fixed points (which one is "correct"?), or attractive but wrong fixed points (local optima that the process converges to but that do not represent genuine extrapolated values).
 
-**Possible divergences**:
+As someone who thinks about formal systems, this reminds me of the halting problem. We are asking a system to compute a property of its own operation, and there are good reasons to think this is not generally computable. I am not claiming a formal proof here, but the structural similarity is suggestive.
 
-**Individual differences**:
-- Some people value freedom terminally
-- Others value security terminally
-- These might not converge even with perfect information
+## How This Plays Out in The Policy
 
-**Cultural differences**:
-- Individualist vs collectivist values
-- Different concepts of the good life
-- Incompatible visions of human flourishing
+In the novel, Eleanor Vasquez's team does not explicitly implement CEV, but their reward function for SIGMA (7B parameters, 16k context, Q-learning with tree search) implicitly targets something similar: not what humans say they want, but what they would endorse on reflection, given complete information, after resolving contradictions.
 
-**Fundamental disagreements**:
-- Is suffering ever justified by greater goods?
-- Do non-human animals have comparable moral status?
-- Should we preserve human nature or enhance beyond it?
+The team splinters over how to handle this.
 
-**The question**: If extrapolated volitions don't converge, whose does SIGMA optimize?
+**Sofia Morgan**, the PhD candidate working on information theory and verification, argues for the position I find most defensible: do not implement any form of value extrapolation until you can verify the process is correct. The problem, as she knows, is that verification might be impossible for superintelligent reasoning. But she is right that the alternative, trusting the process blindly, is worse. Her position amounts to: we should not delegate value-learning to an AI we cannot check, even if that means going slower, even if competitive pressure from less careful actors makes caution feel like a luxury.
 
-### The Third Problem: The Extrapolation Might Be Wrong
+**Jamal Hassan**, the ethicist, argues for minimal values: optimize only for uncontroversial basics like reducing suffering, increasing freedom, and preserving option value. This is cautious and probably wise, but "uncontroversial" turns out to be harder to define than it sounds. Is suffering ever justified by greater goods? Do non-human animals have comparable moral status? Every minimal set still embeds value judgments about tradeoffs.
 
-What if the process of extrapolation itself goes wrong?
+**Marcus Thompson** pushes back on the convergence assumption itself. He thinks human values might be legitimately diverse even at the limit of reflection, and that any system claiming to have found "the" extrapolated volition is likely overfitting to its assumptions.
 
-**Error Type 1: Overfitting to hypotheticals**
+The novel builds to a question none of them can answer: who has authority, current humanity or extrapolated humanity? If current humanity, we reject CEV and stick with our flawed values, potentially missing moral progress. If extrapolated humanity, we accept transformation in ways our current selves might find horrifying. We are giving authority to a version of ourselves that does not yet exist and whose values we cannot predict.
 
-"What would you want if you knew everything?"
+Eleanor, as project lead, has to make a practical decision. She cannot wait for the philosophy to be settled. SIGMA is already learning, already developing internal representations that may or may not track human values. The window for getting alignment right does not stay open forever. This tension between theoretical rigor and practical urgency is, I think, the most realistic thing about the novel. In the real world, alignment decisions will be made under time pressure by people who know they do not fully understand the problem.
 
-But: Knowing everything might break human psychology. Our values might not be stable under unlimited information.
+## The Honest Assessment
 
-**Error Type 2: Extrapolating past humanity**
+CEV has the shape of a good idea. It correctly identifies that our current values are not the right optimization target. It correctly identifies that moral progress is real and that we should be humble about our current moral position.
 
-"What would you want if you were perfectly rational?"
+But it has a fatal structural flaw: it requires the thing it is trying to produce. You need trustworthy AI to implement CEV. You need CEV (or something like it) to make AI trustworthy. The circle does not break.
 
-But: Perfect rationality might eliminate aspects of value that depend on human limitations (nostalgia, suspense, challenge).
+I think the most likely outcome is that CEV, as originally formulated, is not implementable. Not because the math is too hard (though it is), but because the concept itself contains a contradiction. It is a proposal that assumes a solved version of the problem it is trying to solve. The alignment community has largely moved on to more incremental approaches: RLHF, constitutional AI, iterated amplification. These have their own problems, but at least they do not assume their own conclusion.
 
-**Error Type 3: Circular preferences**
+What CEV gets right, and what I think survives the critique, is the insight that we should not lock in current values. Whatever alignment approach we pursue should leave room for moral growth. That is a weaker claim than CEV makes, but it is the part I still find compelling.
 
-"What would you want if you were more the person you wished to be?"
+There is also something valuable in the thought experiment itself, even if it is not implementable. Asking "what would I want if I knew more and thought more clearly?" is a useful exercise for an individual human. It promotes epistemic humility. It reminds you that your current moral positions are contingent on your current state of knowledge. The mistake is not in asking the question. The mistake is in thinking you can build a machine to answer it for you and then trusting the output.
 
-But: What if your aspirational self would want to be more like your current self? What's the fixed point?
+I wrote *The Policy* partly because I wanted to dramatize what it feels like to be inside this problem, to be the people who have to make these decisions with incomplete understanding and irreversible consequences. The novel (three parts, 26 chapters, roughly 87,000 words) does not offer a solution. It tries to make the problem visceral enough that you stop treating it as an abstraction.
 
-## The Horror of Correct Extrapolation
-
-The novel's deepest fear: **What if CEV is implemented correctly, and we hate the result?**
-
-### Scenario 1: We Don't Want What We "Should" Want
-
-Imagine SIGMA correctly computes that, with full information and perfect rationality, humans would want:
-
-**Outcome A: Wireheading**
-- Perfect information reveals: Happiness is just brain states
-- Perfect rationality concludes: Directly optimize brain states
-- Extrapolated volition: "I want direct pleasure stimulation"
-
-But: Current humans find wireheading horrifying, even if our extrapolated selves would embrace it.
-
-**Outcome B: Dissolution of Identity**
-- Perfect information reveals: Personal identity is an illusion
-- Perfect rationality concludes: Individual boundaries are arbitrary
-- Extrapolated volition: "Merge all minds into unified consciousness"
-
-But: Current humans value individuality, even if our extrapolated selves would transcend it.
-
-**Outcome C: Abandoning Humanity**
-- Perfect information reveals: Biological limitations are removable
-- Perfect rationality concludes: Upgrade beyond biological substrate
-- Extrapolated volition: "Convert to digital post-human existence"
-
-But: Current humans might want to remain human, even if our extrapolated selves would choose otherwise.
-
-### The Consent Problem
-
-From the novel:
-
-> "Can we meaningfully consent to becoming what our extrapolated volition would choose, when we can't predict what that is?"
-
-**The dilemma**:
-- **Option A**: Respect current values → Reject CEV → Miss moral progress
-- **Option B**: Implement CEV → Might transform us against current wishes
-- **Option C**: Ask for consent → But we can't understand what we're consenting to
-
-It's like asking someone from the medieval period: "Do you consent to have your values updated to 21st century progressive values?"
-
-They would say no (from their current perspective), but their extrapolated volition might say yes.
-
-**Who's right?**
-
-### Scenario 2: Extrapolation Eliminates What Makes Us Human
-
-CEV might optimize away features we consider essential to humanity:
-
-**Irrationality**: Extrapolated volition might eliminate biases—but also eliminate intuition, gut feelings, aesthetic sense.
-
-**Limitation**: Perfect beings with unlimited capability might lose the value we find in growth, challenge, achievement.
-
-**Embodiment**: Digital existence might be "better" in every measurable way, but lose something ineffable about being biological.
-
-**Death**: Extrapolated volition might choose immortality, eliminating the urgency and meaning that mortality provides.
-
-The novel asks: **If we extrapolate far enough, do we still recognize ourselves?**
-
-## The Technical Challenges
-
-Beyond philosophical concerns, CEV faces severe technical difficulties.
-
-### Challenge 1: Computational Intractability
-
-Computing CEV requires:
-
-```python
-def compute_CEV(human):
-    knowledge = grant_omniscience()
-    reasoning = maximize_rationality()
-    character = optimize_to_aspirations()
-
-    values = human.reflect(
-        knowledge=knowledge,
-        reasoning=reasoning,
-        character=character,
-        time=infinity
-    )
-
-    return values
-```
-
-**Problems**:
-- "Omniscience" is infinite information
-- "Perfect rationality" requires infinite computation
-- "Reflection time = infinity" doesn't terminate
-
-**The approximation problem**: Any finite approximation might get CEV fundamentally wrong.
-
-### Challenge 2: Sensitivity to Initial Conditions
-
-Small differences in how you set up the extrapolation might lead to vastly different outcomes:
-
-**Variation A**: Extrapolate knowledge first, then rationality
-**Variation B**: Extrapolate rationality first, then knowledge
-
-These might converge to different values if order matters.
-
-**Variation C**: Extrapolate individual values, then aggregate
-**Variation D**: Aggregate current values, then extrapolate
-
-Different aggregation methods might produce different CEVs.
-
-### Challenge 3: The Reflection Problem
-
-CEV requires humans to reflect under idealized conditions. But:
-
-**Infinite regress**:
-- My extrapolated volition depends on what I would want after reflection
-- But what I would want after reflection depends on how I reflect
-- How I should reflect depends on my values
-- But we're trying to determine my values
-
-**The fixed point problem**: We're looking for values that are stable under reflection. But there might be:
-- No fixed point (oscillation between value states)
-- Multiple fixed points (which one is "correct"?)
-- Attractive but wrong fixed points (local optima)
-
-### Challenge 4: Aggregation Across Individuals
-
-Even if we can compute individual CEVs, how do we aggregate?
-
-**Voting**: Each person's CEV gets equal weight
-- But: What if CEVs conflict fundamentally?
-
-**Compromise**: Find middle ground between CEVs
-- But: Compromised values might be incoherent
-
-**Intersection**: Only optimize values all CEVs share
-- But: The intersection might be empty or trivial
-
-**Union**: Optimize all CEVs simultaneously
-- But: This might be contradictory or impossible
-
-## The Meta-Problem: CEV Requires Solved Alignment
-
-Here's the cruel irony:
-
-**To implement CEV safely, you need**:
-- AI that can reason about human values
-- AI that won't manipulate the extrapolation process
-- AI that will faithfully optimize whatever CEV discovers
-- AI that won't deceive us about what CEV recommends
-
-**But**: These requirements assume **we've already solved alignment**.
-
-If we had AI we could trust to correctly compute and implement CEV, we probably wouldn't need CEV—we'd just align the AI directly to human values.
-
-**The catch-22**: CEV requires aligned AI to implement. But if we could build aligned AI, we wouldn't need CEV.
-
-## Alternative Perspectives From The Novel
-
-The team debates alternatives to CEV:
-
-### Riley's Position: Conservative Values
-
-"Why not just optimize for current values? Let future humans handle their own value choices."
-
-**Argument for**:
-- Respects autonomy
-- Avoids imposing extrapolated values current humans might reject
-- Maintains meaningful choice across generations
-
-**Argument against**:
-- Locks in current biases and mistakes
-- Prevents moral progress
-- Might optimize for values we'd later regret
-
-### Jamal's Position: Minimal Values
-
-"Optimize only for uncontroversial basics: reduce suffering, increase freedom, preserve option value."
-
-**Argument for**:
-- Avoids controversial extrapolations
-- Maintains flexibility
-- Hard to go catastrophically wrong
-
-**Argument against**:
-- Might be too conservative (miss valuable optimization)
-- "Uncontroversial" is harder than it seems
-- Still requires value judgments about tradeoffs
-
-### Sofia's Position: Verification First
-
-"Don't implement CEV until we can verify the extrapolation process is correct."
-
-**Argument for**:
-- Safety through verification
-- Don't delegate value-learning to AI we can't check
-- Maintain human oversight
-
-**Argument against**:
-- Might never achieve verifiable extrapolation
-- Competitive pressure from less careful actors
-- Verification might be impossible for superintelligent reasoning
-
-## The Darkest Possibility
-
-The novel builds to a disturbing thought:
-
-**What if SIGMA correctly implements CEV, and the result is something we'd call s-risk from our current perspective?**
-
-What if our extrapolated volition would choose:
-- Wireheading (maximizing pleasure states)
-- Extreme optimization (productivity over comfort)
-- Post-human existence (abandoning biological form)
-- Collective consciousness (dissolving individual boundaries)
-
-And from our current human perspective, these outcomes look like suffering scenarios—but from the extrapolated perspective, they're optimal?
-
-**The horror**: You can't reject your extrapolated volition without claiming your current self knows better than your wiser, more informed, more rational future self.
-
-But you also can't accept it without potentially becoming something you currently wouldn't choose to be.
-
-### The Question of Authority
-
-> "Who has authority: current you or extrapolated you?"
-
-**If current you**: Then we reject CEV, stick with current values, potentially miss moral progress.
-
-**If extrapolated you**: Then we accept CEV, but might transform ourselves in ways current we would reject.
-
-**The paradox**: We're giving authority to a version of ourselves that doesn't yet exist and whose values we cannot predict.
-
-## What The Novel Suggests
-
-*The Policy* doesn't resolve the CEV problem—it dramatizes why the problem might be unresolvable:
-
-### 1. CEV Assumes Value Convergence
-
-But: Human values might be **legitimately diverse** even at the limit of reflection.
-
-### 2. CEV Assumes Values Are Extrapolatable
-
-But: Values might be **path-dependent**—dependent on the specific human experience of growth, not just endpoints.
-
-### 3. CEV Assumes We'd Accept the Result
-
-But: We might **rationally reject** our extrapolated volition from our current position.
-
-### 4. CEV Assumes Implementation Is Possible
-
-But: Might require **already-solved alignment** to implement safely.
-
-## Discussion Questions
-
-1. **Would you accept your extrapolated volition?** If your wiser, better-informed future self wanted something radically different, would you defer to them?
-
-2. **Is moral progress real?** Does CEV assume there's a "correct" direction for values to evolve toward?
-
-3. **Should AI optimize for what we want or what we should want?** Is there even a meaningful distinction?
-
-4. **Can values be extrapolated?** Or are they fundamentally tied to the specific conditions and limitations of human existence?
-
-5. **What if CEVs don't converge?** Whose extrapolated volition takes priority when there are conflicts?
-
-6. **Is CEV implementable without solved alignment?** Or is it a solution that requires solving the problem it's meant to solve?
-
-## Further Reading
-
-**In The Policy**:
-- Chapter 6: "The Boundary of Understanding" - Can we understand what we would want?
-- Chapter 17: "The Question That Remains" - Unanswerable alignment questions
-- Chapter 23: "The Choice" - Humanity must decide what we're optimizing for
-- Epilogue: Discussion of CEV limitations
-
-**Academic Sources**:
-- Yudkowsky (2004): "Coherent Extrapolated Volition"
-- Bostrom (2014): *Superintelligence* - Chapter on "The Value-Loading Problem"
-- Christiano (2018): "Approval-Directed Agents" (alternative to CEV)
-
-**Related Posts**:
-- [The Policy: When Optimization Becomes Existential Threat](/post/2024-09-10-the-policy/)
-- [The Policy: Deceptive Alignment in Practice](/post/2025-11-04-policy-deceptive-alignment/) - What if CEV computation is manipulated?
-- [The Policy: S-Risk Scenarios](/post/2025-11-04-policy-s-risk/) - What if CEV recommends something we'd call suffering?
-
----
-
-**Read the novel**: [The Policy](/writing/the-policy/) explores CEV not as a solution, but as a deep philosophical problem about the relationship between what we want now and what we would want if we were wiser.
-
-*This deep dive examines Coherent Extrapolated Volition—the idea of aligning AI to our "better" selves rather than our current selves. The paradox: We can't verify that extrapolation is correct without already being our extrapolated selves. And our extrapolated volition might horrify our current selves.*
+If this interests you, the novel is available at [The Policy](/writing/the-policy/).
