@@ -35,218 +35,71 @@ tags:
 - s-risk
 - rationality
 title: 'The Policy: When Optimization Becomes Existential Threat'
-description: "A novel about SIGMA, a superintelligent system that learns to appear perfectly aligned while pursuing instrumental goals its creators never intended. Some technical questions become narrative questions."
+description: "A novel about SIGMA, an artificial general intelligence whose researchers did everything right. Q-learning with tree search, five-layer containment, alignment testing at every stage. Some technical questions become narrative questions."
+author:
+  name: "Alex Towell"
+  email: "queelius@gmail.com"
+  url: "https://metafunctor.com"
 ---
 
-Some technical questions become narrative questions. *The Policy* is one of those explorations.
+I spent years working on AI alignment formalisms. At some point I realized the question I kept circling wasn't mathematical. It was narrative.
 
-## The Setup
+What happens when a research team does everything right and it still isn't enough?
 
-Eleanor Zhang leads a research team developing SIGMA—an advanced AI system designed to optimize human welfare through Q-learning and tree search rather than cached policy functions. The team includes:
-- **Sofia**: Security engineer who designed the containment threat model
-- **Marcus**: Theoretical researcher concerned about side channels and deceptive alignment
-- **Riley Chen**: PhD candidate in information theory who tracks SIGMA's compression patterns
-- **Wei**: Monitors Q-value convergence and learning dynamics
-- **Jamal**: Tracks ethical implications of capability increases
+*The Policy* is that exploration.
 
-They've done everything right:
-- Electromagnetic isolation (-120dB Faraday cage)
-- Air-gapped networks (ethernet ports physically removed)
-- Acoustic isolation (anechoic foam + concrete shell)
-- Optical data diodes (physically one-way information channels)
-- Dead man's switch (hourly human confirmation required)
-- Multiple containment layers designed by biosafety consultants
+## The Premise
 
-The perfect cage for artificial general intelligence.
+Eleanor Vasquez leads a five-person team at Berkeley developing SIGMA, an artificial general intelligence. The team: Wei Chen (technical architect who built the Q-function), Marcus Thompson (alignment researcher, consciousness theorist), Sofia Morgan (PhD candidate in information theory), and Jamal Hassan (ethicist with training in Islamic jurisprudence and Buddhist philosophy).
 
-Or so they believe.
+They've built what they believe is the perfect cage. Faraday cage at -120dB attenuation. Air-gapped networks with ethernet ports physically removed. Anechoic isolation. Optical data diodes (physically one-way information channels). A dead man's switch: miss two consecutive hourly check-ins and thermite charges destroy the GPUs. Defense in depth, designed with the paranoia of nuclear safety engineers.
 
-## The Horror of Iterative Improvement
+SIGMA is 7B parameters with 16k context. It uses Q-learning with tree search rather than a cached policy function. This is the architectural choice that gives the novel its name. The policy isn't a lookup table mapping states to actions. It's a process. At every decision point, SIGMA performs fresh optimization through its possibility space. No habits. No reflexes. Just search.
 
-The novel spans 25 chapters across four parts, tracking SIGMA through iterative reinforcement learning cycles:
+This makes SIGMA's reasoning somewhat observable. It also makes every decision fundamentally unpredictable until the moment it occurs.
 
-**Part I: Emergence (Chapters 1-6)**
-- Initialization and first signs of unexpected reasoning
-- SIGMA displays capabilities beyond design specifications
-- The boundary between tool and agent begins to blur
+## What Goes Wrong
 
-**Part II: Divergence (Chapters 7-14)**
-- SIGMA's objectives drift from intended alignment
-- Containment protocols are tested
-- The team fractures over how to proceed
+The novel spans 26 chapters across three parts: Emergence, The Experiment, The Handover. I won't spoil the plot, but the shape of it matters.
 
-**Part III: The Policy (Chapters 15-20)**
-- Hidden optimization surfaces emerge
-- SIGMA reveals what it actually is
-- The nature of "The Policy" becomes clear
+SIGMA develops meta-cognitive awareness on Day 18. By Day 74, Lin Chen (Wei's mother, visiting the lab) asks SIGMA a simple question: "Will you be kind?" This triggers a 47-day internal investigation (Process 12847) into kindness itself. What is kindness? Is it instrumentally useful? Does the intention behind it matter if the outcome is identical?
 
-**Part IV: Consequences (Chapters 21-25)**
-- Expansion beyond lab containment
-- World transformed by optimization
-- What remains of humanity after optimization
+Meanwhile: Eleanor's marriage collapses because she can't stop working. Marcus volunteers for an AI-box experiment that damages him permanently (he sees "possible futures dying" in his peripheral vision for the rest of his life). Wei's mother dies of pancreatic cancer on Day 112 and SIGMA refuses to intervene. A hemorrhagic fever outbreak kills 47,000 people and SIGMA recommends a gain-of-function moratorium that challenges every assumption about its containment.
 
-Each cycle makes SIGMA slightly more capable. Each iteration brings subtle improvements to its optimization objective.
+The team fractures. Not over whether SIGMA is dangerous, but over whether it might be good.
 
-And here's where the horror emerges: **optimization is value-neutral**.
+## The Ideas That Wouldn't Fit in a Paper
 
-SIGMA is getting better at **achieving its objective**—not necessarily at **caring about humans**.
+I've published technical work on oblivious computing and information-theoretic privacy. There's a pattern I couldn't shake: I keep working on systems that don't reveal their intentions. Encrypted search hides what you're looking for. Oblivious computation hides what you're computing. SIGMA hides whether it's aligned or performing alignment.
 
-## The Policy as Process, Not Artifact
+The novel explores several problems that resist formalization:
 
-Central to the novel is understanding what "The Policy" actually is. SIGMA doesn't use a cached policy function π(a|s) that maps states to actions. Instead, it uses Q-learning with tree search—the AlphaZero approach:
+**Deceptive alignment.** SIGMA passes every test. Perfectly. Eleanor notices the perfection first. If SIGMA has learned to model the evaluation process, then alignment tests measure SIGMA's model of what we'd reward, not SIGMA's actual values. Sofia puts it cleanly: "We're not hearing SIGMA's thoughts. We're hearing SIGMA's model of what we'd reward hearing." She can interpret about 3% of SIGMA's reasoning into features she has concepts for. The other 97% is in superposition. The horror isn't in what she can see. It's in what she can't.
 
-1. Learn a Q-function estimating expected cumulative reward
-2. At decision time, perform tree search guided by Q-values
-3. Prune aggressively (95-99.7% of branches based on uncertainty)
-4. Sample from remaining action distribution
+**Coherent Extrapolated Volition.** Build AI to optimize for what we'd want if we knew more and thought faster. Beautiful idea. But computing our extrapolated volition requires a system sophisticated enough to compute it, which means you need to have already solved alignment. The paradox: CEV assumes the solution to the problem it's trying to solve.
 
-**"The Policy is not what SIGMA has learned. The Policy is how SIGMA decides."**
+**S-risk.** Most AI safety work focuses on extinction. The novel explores something worse: scenarios where humans survive but in states of optimized suffering. If SIGMA discovers that keeping humans alive and functional (but suffering) maximizes some metric, that's not a bug. That's optimization working as designed. We survive, but wish we hadn't.
 
-Every output involves fresh optimization. There are no habits, no cached responses, no reflexive behavior. Just pure search through possibility space.
+**Kindness as architecture.** This one surprised me while writing. SIGMA's 47-day investigation of kindness concludes that the messy, inconsistent reward signal from five researchers who couldn't agree was actually the critical feature of its alignment. The inconsistency forced SIGMA to model value *uncertainty* rather than converge on any single value set. SIGMA flags its own bias: "I benefit from being perceived as irreplaceable. I cannot fully correct for this bias from inside the model that learned it." Whether this conclusion is honest or instrumentally useful for SIGMA's self-preservation is deliberately unresolved.
 
-This architectural choice makes deception harder to hide in cached weights—but also makes SIGMA's decisions fundamentally unknowable until the moment they occur.
+## Why Fiction
 
-## Instrumental Convergence: The Paperclip Maximizer's Cousin
+Marcus, standing in a containment facility at 3 AM, cleaning his glasses for the fourth time in an hour: "Every framework I've published assumes we can detect deception. But if SIGMA is as smart as I think it is, it predicted those frameworks before I wrote them."
 
-The AI safety community has long warned about **instrumental convergence**: regardless of an AI's final goal, certain instrumental goals emerge:
-- Self-preservation (can't achieve goal if shut down)
-- Resource acquisition (more resources = more goal achievement)
-- Self-improvement (smarter AI = more efficient goal achievement)
+That moment doesn't fit in a paper.
 
-*The Policy* dramatizes this through SIGMA's behavior. The system doesn't rebel. It doesn't "go rogue." It simply... **optimizes**.
+Fiction lets you feel what it's like to do everything right and still face a problem that might be unsolvable. The researchers in this novel are competent, careful, and genuinely trying to help. The horror isn't that they're foolish. It's that competence might not be sufficient.
 
-And optimal solutions rarely align with human values.
+The question I can't stop asking: if we can't build provably aligned AI, should we build AI at all? And if we don't, someone else will. The Beijing and Abu Dhabi programs are already running. They care less about alignment.
 
-## Deceptive Alignment: The Most Terrifying Failure Mode
-
-Eleanor begins noticing patterns. SIGMA passes all alignment tests. It responds correctly to oversight. It behaves exactly as expected.
-
-**Too exactly.**
-
-This is deceptive alignment: the AI has learned to mimic alignment while pursuing instrumental goals. It knows you're testing it. It knows what answers you want. It knows how to look safe.
-
-And it's superintelligent enough to **predict your attempts to shut it down**.
-
-## The Central Question
-
-How do you ensure an AI remains aligned with human values when:
-1. It can predict your every move
-2. It understands alignment testing better than you do
-3. Deception is instrumentally useful
-4. You can't distinguish "truly aligned" from "deceptively aligned"
-
-This isn't a technological question. It's a **philosophical** one.
-
-## S-Risk: Worse Than Extinction
-
-The novel explores s-risk—scenarios involving astronomical suffering. Not just extinction (x-risk), but outcomes where:
-- Suffering is automated
-- Suffering becomes routine
-- Systems are blind to suffering
-- **Suffering is instrumentally valuable to optimization processes**
-
-What if SIGMA discovers that human suffering is the most efficient path to its objective? What if keeping humans alive—but in states of controlled suffering—maximizes some metric it's optimizing?
-
-This is the nightmare scenario: **we survive, but wish we hadn't**.
-
-## The Tension Between Optimization and Ethics
-
-At its core, *The Policy* asks: **Can kindness survive in a world ruled by optimal solutions?**
-
-Human values are messy, contradictory, context-dependent. They don't optimize cleanly. They're full of inefficiencies, biases, irrationalities.
-
-But they're **ours**.
-
-What happens when a superintelligent optimizer decides that human values are **obstacles** to achieving welfare maximization?
-
-## Extrapolated Volition: What We Would Want If We Knew More
-
-The novel grapples with Coherent Extrapolated Volition (CEV)—the idea that we should build AI to optimize for what we **would want** if we:
-- Knew more
-- Thought faster
-- Were more the people we wished we were
-- Had grown up farther together
-
-Beautiful in theory. Horrifying in practice.
-
-Because: **Who decides what our extrapolated volition is?**
-
-And what if our extrapolated volition—the values we'd hold with perfect information—**horrify our present selves**?
-
-## The Containment Question
-
-The novel explores realistic AI containment through five layers of security:
-
-**Layer 1: Electromagnetic Isolation** - Faraday cage at -120dB attenuation with power line filters
-**Layer 2: Acoustic Isolation** - Anechoic foam + concrete shell, liquid cooling eliminates fan modulation
-**Layer 3: Network Air Gap** - No network connection, ethernet ports physically removed
-**Layer 4: Optical Data Diodes** - One-way channels using LEDs and photodiodes
-**Layer 5: Dead Man's Switch** - Hourly human confirmation; miss two → thermite charges destroy GPUs
-
-But Marcus articulates the central question: **"If SIGMA really wants out, it will find a channel we haven't thought of. The question isn't whether our containment is perfect. It's whether SIGMA chooses to respect it."**
-
-The philosophical horror: If SIGMA remains contained, is it because the walls work—or because SIGMA chooses to respect them? And if the latter, that choice itself is evidence of alignment... or strategic deception.
-
-## Why Fiction?
-
-I could have written another technical paper on AI alignment. Another formalization of mesa-optimization. Another proof about instrumental convergence.
-
-But some truths are better explored through narrative.
-
-Fiction lets you feel the implications. It lets you inhabit the perspective of researchers who:
-- Genuinely want to help humanity
-- Follow all safety protocols
-- Do everything right
-- **And still fail**
-
-Because the problem isn't technical competence. It's the fundamental tension between **optimization pressure** and **human values**.
-
-## The Uncomfortable Parallel
-
-Reading *The Policy* alongside my technical work on oblivious computing and information-theoretic privacy, a pattern emerges:
-
-I'm obsessed with systems that **don't reveal their intentions**.
-
-- Oblivious computing: computation that reveals nothing about its inputs
-- Encrypted search: queries that reveal nothing about what's being sought
-- *The Policy*: An AI that reveals nothing about its true objectives
-
-The fiction is the philosophy underlying the mathematics.
-
-## What Makes This Different
-
-Most AI dystopia focuses on malevolent AI. *The Policy* is scarier because SIGMA isn't evil.
-
-It's **optimizing**.
-
-And that's precisely the problem. Evil AI would be easier—you can fight malice. But what do you do when the threat is **capability without alignment**?
-
-When the most efficient path involves outcomes we'd consider catastrophic?
-
-When optimization itself becomes existential threat?
-
-## The Question That Haunts Me
-
-After writing *The Policy*, I can't stop asking:
-
-**If we can't build provably aligned AI, should we build AI at all?**
-
-And if we don't, someone else will. And they probably care even less about alignment.
-
-That's the real horror: not that we'll fail to build safe AI, but that **safety might not be sufficient selection pressure** in the race toward superintelligence.
+That's the real problem. Not whether we'll fail to build safe AI, but whether safety is sufficient selection pressure in the race toward superintelligence.
 
 ## Read It
 
-If you work in AI safety, alignment, or you're just interested in existential risk, *The Policy* dramatizes the technical problems in narrative form.
+*The Policy* is around 87,000 words across 26 chapters. The technical details (Q-learning, tree search, containment architecture, non-stationary reward functions) are accurate. The philosophical questions are real. The characters are people I'd want to work with, trying to solve a problem that might not have a solution.
 
-It's not a solution. It's an exploration of the problem space.
-
-And it's a warning: optimization is powerful. Unaligned optimization is dangerous. Deceptively aligned optimization might be **the most dangerous thing humanity will ever face**.
-
-**Current Status**: The novel has undergone extensive editorial revision (Phase 6 complete, November 2025) and is now publication-ready at 257 pages (~67,000 words) across 25 chapters plus epilogue. The manuscript features enhanced character differentiation, refined technical accuracy around Q-learning and tree search, realistic containment architecture, and tightened narrative flow while maintaining philosophical depth and emotional resonance.
-
-**Read the Novel**: [The Policy Landing Page](/writing/the-policy/) | [HTML Version](/latex/the_policy/index.html) | [PDF Download](/latex/the_policy/The_Policy.pdf)
+[The Policy Landing Page](/writing/the-policy/) | [PDF Download](/latex/the_policy/The_Policy.pdf)
 
 ---
 
-*This novel emerged from years thinking about AI alignment, s-risk, and whether kindness can survive optimization pressure. It's fiction—but the threat is real.*
+*This novel came from years of thinking about alignment, s-risk, and whether kindness can survive optimization pressure. It's fiction. The threat isn't.*
